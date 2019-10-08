@@ -15,7 +15,7 @@ app.use(express.static('static')) // whenever you're trying to serve a file, and
 
 //default root route
 app.get('/', function(req, res) {
-    res.send("you hit the root route")
+    res.render("home");
 });
 
 app.use('/dinosaurs', require('./routes/dinosaurs'));
