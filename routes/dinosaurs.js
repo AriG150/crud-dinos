@@ -4,7 +4,7 @@ const router = express.Router(); // b/c router file
 //fs stands for file system
 const fs = require('fs');
 
-
+//SHOW all dino
 router.get('/', function(req, res) {
     var dinos = fs.readFileSync('./dinosaurs.json');
         //read contents of dinosaurs into var dino
@@ -14,6 +14,7 @@ router.get('/', function(req, res) {
 });
 //once created this, import into 'server' (the route that says: app.get res.render home)
 
+//CREATE new dino with POST 
 router.post('/', function(req, res) {
     var dinos = fs.readFileSync('./dinosaurs.json')
     var dinoData = JSON.parse(dinos);
@@ -22,15 +23,41 @@ router.post('/', function(req, res) {
     res.redirect('/dinosaurs');
 })
 
+//SHOW new Dino form 
 router.get('/new', function(req, res) {
     res.render('dinosaurs/new');
 })
 
+//SHOW EDIT Form
+router.get('/edit/:id', function(req, res) {
+    var index = parseInt(req.params.id) // id of the parameter 
+    var dinos = fs.readFileSync('./dinosaurs.json');
+    var dinoData = JSON.parse(dinos);
+    res.render('dinosaurs/edit', {dino: dinoData[index], dinoIndex: index}) // object needs dino: {name: string, type: string, dinoInex: int}
+})
+
+//EDIT One Dino
+router.put('/:id', function(req, res) {
+    //Read the Dinos JSON file, 
+    var index = parseInt(req.params.id);
+    var dinos = fs.readFileSync('./dinosaurs.json');
+    var dinoData = JSON.parse(dinos);
+    //Update the dino at the index (req.params.id)
+    dinoData[index] = req.body
+    //restringify the dino details and rewriet the dinosaur.json
+    fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinoData));
+    //redirect to the dino show page 
+    res.redirect(`/dinosaurs/${index}`)
+})
+
+//DELETE One Dino
+
+//SHOW ONE Dino 
 router.get('/:id', function(req, res) {
     var index = parseInt(req.params.id);
     var dinos = fs.readFileSync('./dinosaurs.json');
     var dinoData = JSON.parse(dinos);
-    res.render('dinosaurs/show', {dino: dinoData[index]}); 
+    res.render('dinosaurs/show', {dino: dinoData[index], dinoIndex: index}); 
 });
 
 
