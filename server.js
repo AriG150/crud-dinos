@@ -12,6 +12,7 @@ app.use(ejsLayouts);
 
 //how to find static file (files that don't need to be rendered in any way) Where to keep files, etc. 
 app.use(express.static('static')) // whenever you're trying to serve a file, and that file is making reference to css/js file, this is directory where you'll find it 
+app.use(express.urlencoded({extended: false})) //takes every form submission, sticks it into form.body
 
 //default root route
 app.get('/', function(req, res) {
