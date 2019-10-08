@@ -1,0 +1,19 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header{
+    background-color: cornflowerblue
+}
+
+footer{
+    background-color: slategray;
+    color: whitesmoke;
+}
+
+ul {
+    width: 15%;
+    margin: auto;
+}
