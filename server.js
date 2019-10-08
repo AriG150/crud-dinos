@@ -18,6 +18,8 @@ app.get('/', function(req, res) {
     res.send("you hit the root route")
 });
 
+app.use('/dinosaurs', require('./routes/dinosaurs'));
+
 app.listen(3000, function() {
     console.log("server listening on port 3000")
 })
