@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
     //res.json(dinoData);    // testing 
     res.render('dinosaurs/index', {dinos: dinoData}); // key called dino, carry value of whatever's in dinoData. Have array of object rendering it into dinosaurs/index, within that you're forEaching over dino Key, render into list item with it's name and type printed out. Context of file copied into ejs engine, put into body, put into page, response sent to server 
 });
-//once created this, import into 'server' (app.get res.render home)
+//once created this, import into 'server' (the route that says: app.get res.render home)
 
 router.post('/', function(req, res) {
     var dinos = fs.readFileSync('./dinosaurs.json')
