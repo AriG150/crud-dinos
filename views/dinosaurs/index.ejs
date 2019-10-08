@@ -1,5 +1,5 @@
 <ul>
-    <% dinos.forEach(function(dino) { %> 
-        <li><%= dino.name %> is a <%= dino.type %></li>
+    <% dinos.forEach(function(dino, id) { %> 
+        <li><a href="/dinosaurs/<%= id %>"><%= dino.name %></a> is a <%= dino.type %></li>
     <% }); %>
 </ul>
