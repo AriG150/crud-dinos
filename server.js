@@ -26,6 +26,7 @@ app.get('/', function(req, res) {
 
 //Controllers 
 app.use('/dinosaurs', require('./routes/dinosaurs'));
+app.use('/cryptids', require('./routes/cryptids'));
 
 app.listen(3000, function() {
     console.log("server listening on port 3000")

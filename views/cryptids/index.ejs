@@ -1,5 +1,7 @@
 <ul>
-    <% myCryptids.forEach(function(cryptid, id) { %>
-        <li><a href="/cryptids/<%= id %>"> <%= cryptid.name %></a> is a <%= cryptid.type %> </li>
-    %< }) %>
+    <% cryptids.forEach(function(cryptid, id) { %>
+        <li>
+            <a href="/cryptids/<%= id %>"> <%= cryptid.name %></a> 
+        </li>
+    <% }); %>
 </ul>
