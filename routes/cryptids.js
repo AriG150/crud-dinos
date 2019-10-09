@@ -12,6 +12,17 @@ router.get('/', function(req, res) {
     console.log(cryptids);
 });
 
+//CREATE new cryptid from form 
+// push new data into array, write result back to file, redirect to index 
+router.post('/', function(req, res) {
+    var cryptids = fs.readFileSync('./cryptids.json');
+    var cryptidData = JSON.parse(cryptids);
+    cryptidData.push(req.body);
+    fs.writeFileSync('./cryptids.json', JSON.stringify(cryptidData));
+    res.redirect('/cryptids');
+})
+
+
 //GET/SHOW a form 
 router.get('/new', function(req, res) {
     res.render('cryptids/new');
