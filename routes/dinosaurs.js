@@ -51,6 +51,19 @@ router.put('/:id', function(req, res) {
 })
 
 //DELETE One Dino
+router.delete('/:id', function(req, res) {
+    //read file, JSON Parse it, etc 
+    var index = parseInt(req.params.id);
+    var dinos = fs.readFileSync('./dinosaurs.json')
+    var dinoData = JSON.parse(dinos);
+    console.log(dinoData)
+    //remove the dino at specified index 
+    var deadDino = dinoData.splice(index, 1);
+    //Restringify the dino details and rewerite the dinosaurs.json
+    console.log(dinoData)
+    fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinoData));
+    res.redirect('/dinosaurs');
+})
 
 //SHOW ONE Dino 
 router.get('/:id', function(req, res) {

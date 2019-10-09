@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router(); // b/c router file
 const fs = require('fs'); //fs stands for file system
 
+//SHOW all cryptids
 router.get('/', function(req, res) {
     var cryptids = fs.readFileSync('./cryptids.json'); // read contents of cryptids.json into var cryptids
     var cryptidData = JSON.parse(cryptids); // converted to JS data type 
