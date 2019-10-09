@@ -69,7 +69,7 @@ router.get('/:id', function(req, res) {
     var index = parseInt(req.params.id); //this is a string
     var cryptids = fs.readFileSync('./cryptids.json'); 
     var cryptidData = JSON.parse(cryptids);
-    res.render('cryptids/show', {cryptids: cryptidData[index], cryptidIndex: index})
+    res.render('cryptids/show', {cryptids: cryptidData[index], cryptidsIndex: index})
 });
 
 
