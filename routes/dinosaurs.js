@@ -23,7 +23,7 @@ router.post('/', function(req, res) {
     res.redirect('/dinosaurs');
 })
 
-//SHOW new Dino form 
+//GET new Dino form 
 router.get('/new', function(req, res) {
     res.render('dinosaurs/new');
 })
